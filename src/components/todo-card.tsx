@@ -1,11 +1,18 @@
 
 export interface TodoCardProps {
+    id: string
     text: string
     todoFlg: boolean
     toggleTodo: () => void
+    deleteHandle: (id: string) => void
 }
 
 export const TodoCard = (props: TodoCardProps) => {
+
+    const deleteTodo = () => {
+        props.deleteHandle(props.id)
+    }
+
     return (
         <li>
             <input
@@ -14,7 +21,7 @@ export const TodoCard = (props: TodoCardProps) => {
                 onChange={props.toggleTodo}
             />
             {props.text}
-            <button>
+            <button onClick={deleteTodo}>
                 remove
             </button>
         </li>
